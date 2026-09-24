@@ -78,7 +78,9 @@ function ItemAba({ aba, posicao, indice, tamanho, onPress }: PropsItem) {
       </Animated.View>
       {contador > 0 ? (
         <View style={styles.contador} pointerEvents="none">
-          <Text style={styles.contadorTexto}>{contador > 9 ? '9+' : contador}</Text>
+          <Text style={styles.contadorTexto} maxFontSizeMultiplier={1}>
+            {contador > 9 ? '9+' : contador}
+          </Text>
         </View>
       ) : null}
     </Pressable>

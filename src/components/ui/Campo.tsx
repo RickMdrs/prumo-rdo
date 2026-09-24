@@ -65,6 +65,7 @@ export function Campo({
         <TextInput
           style={[styles.input, multiline && styles.inputMultilinha]}
           placeholderTextColor={cores.textoDesabilitado}
+          maxFontSizeMultiplier={1.4}
           accessibilityLabel={rotulo}
           multiline={multiline}
           secureTextEntry={segredo && !visivel}

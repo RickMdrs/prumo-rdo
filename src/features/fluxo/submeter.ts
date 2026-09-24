@@ -19,7 +19,17 @@ export async function submeterRdo(idLocal: string): Promise<number> {
     );
   }
 
-  await sincronizar();
+  // Uma rodada pode já estar em andamento quando o botão é tocado (a foto que
+  // acabou de ser tirada, por exemplo). Repete até a fila deste RDO esvaziar.
+  for (let tentativa = 0; tentativa < 4; tentativa++) {
+    await sincronizar();
+    const atual = await buscarRdoLocal(idLocal);
+    const fotosAtuais = await listarFotosDoRdo(idLocal);
+    const pronto =
+      atual?.status_sync === 'sincronizado' &&
+      fotosAtuais.every((f) => f.status_sync === 'sincronizado');
+    if (pronto || atual?.status_sync === 'erro') break;
+  }
 
   const local = await buscarRdoLocal(idLocal);
   if (!local?.id_remoto || local.status_sync !== 'sincronizado') {

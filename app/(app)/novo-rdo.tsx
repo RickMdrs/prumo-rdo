@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { useQuery } from '@tanstack/react-query';
-import { useRouter } from 'expo-router';
-import { useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { useCallback, useState } from 'react';
 import { Alert, Pressable, StyleSheet, View } from 'react-native';
 
 import { ALTURA_BARRA_ABAS } from '@/components/BarraAbas';
@@ -36,6 +36,13 @@ export default function NovoRdo() {
     },
     enabled: Boolean(autorId),
   });
+
+  // Vínculo novo feito pelo Master aparece ao voltar para esta aba.
+  useFocusEffect(
+    useCallback(() => {
+      void refetch();
+    }, [refetch]),
+  );
 
   async function comecar(obraId: string, obraNome: string) {
     setCriando(obraId);
