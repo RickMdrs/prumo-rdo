@@ -786,7 +786,8 @@ const styles = StyleSheet.create({
     gap: 4,
     alignSelf: 'flex-start',
     marginTop: 4,
-    minHeight: 32,
+    minHeight: 44,
+    paddingRight: espaco.md,
   },
   evento: { flexDirection: 'row', gap: espaco.md },
   eventoIcone: {

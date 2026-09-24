@@ -118,7 +118,9 @@ export default function AssistenteRdo() {
         `RDO n. ${numero} submetido`,
         'O responsável técnico foi avisado e vai analisar.',
       );
-      router.replace('/meus-rdos');
+      // Vai para o detalhe (e não para "Meus RDOs"): quem submete pode ser o
+      // Master reenviando uma retificação, e ele não tem essa aba.
+      router.replace(`/rdo/ver/${id}`);
     } catch (erro) {
       setProblemas([erro instanceof Error ? erro.message : 'Não foi possível submeter.']);
     } finally {

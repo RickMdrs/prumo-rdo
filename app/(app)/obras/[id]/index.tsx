@@ -160,9 +160,10 @@ export default function DetalheObra() {
             {rdos.map((rdo) => (
               <Pressable
                 key={rdo.id}
+                onPress={() => router.push(`/rdo/ver/${rdo.id}`)}
                 accessibilityRole="button"
-                accessibilityLabel={`RDO número ${rdo.numero}`}
-                style={styles.rdo}
+                accessibilityLabel={`Abrir RDO número ${rdo.numero}`}
+                style={({ pressed }) => [styles.rdo, pressed && { opacity: 0.8 }]}
               >
                 <View style={styles.textos}>
                   <Texto variante="corpoForte">RDO n. {rdo.numero}</Texto>
