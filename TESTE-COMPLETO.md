@@ -90,13 +90,15 @@ Antes: com internet, abra **Novo RDO** uma vez (o app guarda as obras e o "RDO a
 | D08 | Deixe uma função em branco → Avançar | "Mão de obra, linha N: informe a função" |
 | D09 | Equipamentos: coloque 2 horas paradas num deles → Avançar | Bloqueia até informar o motivo da parada |
 | D10 | Deixe **3 equipamentos** | — |
-| D11 | Atividades: ligue "Dia sem produção", justificativa "chuva" → Avançar | "Justifique… (mínimo de 10 caracteres)" |
-| D12 | Desligue "Dia sem produção"; numa atividade coloque avanço 150 | "Entre 0 e 100" e o Avançar bloqueia |
+| D11 | Atividades: ligue "Obra parada hoje", motivo "chuva" → Avançar | "Descreva o motivo da obra parada (mínimo de 10 caracteres)" |
+| D12 | Desligue "Obra parada hoje"; numa atividade coloque avanço 150 | "Entre 0 e 100" e o Avançar bloqueia |
 | D13 | Ocorrências: horário "99:99" | "horário no formato HH:MM" |
 | D14 | Remova uma linha qualquer (lixeira) | Pede confirmação; ao confirmar, some |
 | D15 | Toque nos segmentos da barra de progresso lá em cima | Pula direto para a etapa tocada |
 | D16 | Toque no X do topo, depois abra o rascunho em Meus RDOs | Tudo que foi digitado está lá |
 | D17 | Feche o app de vez e abra de novo (ainda em modo avião) | O rascunho continua em Meus RDOs, "Aguardando envio" |
+| D19 | Novo RDO → **Obra parada hoje** (topo da etapa 1) → motivo completo → Ir para o envio | Vai direto à Revisão, sem pedir clima nem atividades |
+| D20 | Declaração → Submeter | Aceito; o Master recebe "RDO n. X: obra parada" com o motivo |
 | D18 | Crie um **segundo** rascunho na mesma obra, mesma data e turno | Aviso amarelo de possível duplicidade (não bloqueia) |
 
 ## E. Fotos (celular B, ainda em modo avião)

@@ -349,7 +349,7 @@ export default function DetalheRdo() {
         <Secao titulo="Atividades">
           {d.rdo.sem_producao_justificativa ? (
             <View style={styles.item}>
-              <Texto variante="corpoForte">Dia sem produção</Texto>
+              <Texto variante="corpoForte">Obra parada no dia</Texto>
               <Texto variante="auxiliar" cor={cores.textoSecundario}>
                 {d.rdo.sem_producao_justificativa}
               </Texto>

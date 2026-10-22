@@ -322,6 +322,54 @@ async function main() {
     const url = await master.storage.from('rdo-fotos').createSignedUrl(caminho, 60);
     ok(Boolean(url.data?.signedUrl), 'Master gera URL assinada da foto');
 
+    console.log('\nObra parada — só o motivo');
+    const paradaId = randomUUID();
+    await oper.rpc('rdo_criar', {
+      p_obra_id: obraId,
+      p_data: hoje,
+      p_turno: 'manha',
+      p_id: paradaId,
+    });
+    const vazio: RascunhoRdo = {
+      ...r,
+      id: paradaId,
+      turno: 'manha',
+      clima: [],
+      mao_obra: [],
+      equipamentos: [],
+      atividades: [],
+      ocorrencias: [],
+      pendencias: [],
+      sem_producao: true,
+      declaracao_aceita: true,
+    };
+    await oper.rpc('rdo_salvar_rascunho', {
+      p_rdo_id: paradaId,
+      p_payload: montarPayload({ ...vazio, sem_producao_justificativa: 'chuva' }),
+    });
+    const curto = await oper.rpc('rdo_submeter', { p_rdo_id: paradaId });
+    ok(Boolean(curto.error), `motivo curto recusado ("${curto.error?.message}")`);
+    await oper.rpc('rdo_salvar_rascunho', {
+      p_rdo_id: paradaId,
+      p_payload: montarPayload({
+        ...vazio,
+        sem_producao_justificativa: 'Chuva forte o dia inteiro, sem condição de trabalho',
+      }),
+    });
+    const parada = await oper.rpc('rdo_submeter', { p_rdo_id: paradaId });
+    ok(
+      parada.data?.status === 'submetido',
+      `sem clima e sem atividade, só com o motivo: submetido ${parada.error?.message ?? ''}`,
+    );
+    const { data: avisoParada } = await master
+      .from('notificacoes')
+      .select('titulo')
+      .eq('rdo_id', paradaId);
+    ok(
+      Boolean(avisoParada?.some((n) => n.titulo.includes('obra parada'))),
+      `Master avisado: "${avisoParada?.[0]?.titulo}"`,
+    );
+
     console.log('\nParte 10 — PDF com hash registrado uma única vez');
     const caminhoPdf = `${obraId}/${rdoId}/rdo-1-v1.pdf`;
     const pdf = await master.storage

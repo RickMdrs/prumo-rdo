@@ -76,7 +76,7 @@ export function problemasDaEtapa(r: RascunhoRdo, etapa: number): string[] {
     case 4:
       if (r.sem_producao) {
         if (r.sem_producao_justificativa.trim().length < 10) {
-          p.push('Justifique o dia sem produção (mínimo de 10 caracteres).');
+          p.push('Descreva o motivo da obra parada (mínimo de 10 caracteres).');
         }
       } else {
         r.atividades.forEach((a, i) => {
@@ -115,14 +115,15 @@ export function faltasParaSubmeter(r: RascunhoRdo): Falta[] {
     for (const mensagem of problemasDaEtapa(r, etapa)) faltas.push({ etapa, mensagem });
   }
 
-  if (r.clima.length === 0) {
+  // Obra parada dispensa clima e atividades: basta o motivo (validado na etapa 4).
+  if (!r.sem_producao && r.clima.length === 0) {
     faltas.push({ etapa: 1, mensagem: 'Registre o clima de pelo menos um período.' });
   }
 
   if (!r.sem_producao && r.atividades.length === 0) {
     faltas.push({
       etapa: 4,
-      mensagem: 'Registre ao menos uma atividade ou marque o dia como sem produção.',
+      mensagem: 'Registre ao menos uma atividade ou marque a obra como parada.',
     });
   }
 

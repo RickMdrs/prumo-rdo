@@ -125,7 +125,7 @@ export function EtapaRevisao({ r, atualizar, irPara, fotos }: Props) {
       <Resumo titulo="Atividades" etapa={4} irPara={irPara}>
         <Texto variante="auxiliar" cor={cores.textoSecundario}>
           {r.sem_producao
-            ? `Dia sem produção: ${r.sem_producao_justificativa}`
+            ? `Obra parada: ${r.sem_producao_justificativa}`
             : r.atividades.length === 0
               ? 'Nenhuma atividade'
               : r.atividades

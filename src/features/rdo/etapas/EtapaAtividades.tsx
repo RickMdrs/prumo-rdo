@@ -31,17 +31,17 @@ export function EtapaAtividades({ r, atualizar }: PropsEtapa) {
     <View style={styles.base}>
       <View style={styles.semProducao}>
         <Interruptor
-          rotulo="Dia sem produção"
-          descricao="Use quando nenhum serviço foi executado (chuva o dia todo, feriado, paralisação)."
+          rotulo="Obra parada hoje"
+          descricao="Ninguém trabalhou na obra (chuva, feriado, embargo, falta de material). Se só algumas pessoas faltaram, registre normalmente."
           valor={r.sem_producao}
           onChange={(sem_producao) => atualizar((a) => ({ ...a, sem_producao }))}
         />
         {r.sem_producao ? (
           <Campo
-            rotulo="Justificativa"
+            rotulo="Motivo da obra parada"
             obrigatorio
             multiline
-            placeholder="Explique por que não houve produção"
+            placeholder="Ex.: chuva forte durante todo o dia, sem condição de trabalho"
             value={r.sem_producao_justificativa}
             onChangeText={(sem_producao_justificativa) =>
               atualizar((a) => ({ ...a, sem_producao_justificativa }))

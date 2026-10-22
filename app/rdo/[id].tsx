@@ -24,6 +24,7 @@ import { EtapaIdentificacao } from '@/features/rdo/etapas/EtapaIdentificacao';
 import { EtapaMaoObra } from '@/features/rdo/etapas/EtapaMaoObra';
 import { EtapaOcorrencias } from '@/features/rdo/etapas/EtapaOcorrencias';
 import { EtapaRevisao } from '@/features/rdo/etapas/EtapaRevisao';
+import { ObraParada } from '@/features/rdo/ObraParada';
 import { useRascunho } from '@/features/rdo/useRascunho';
 import { ETAPAS, faltasParaSubmeter, problemasDaEtapa } from '@/features/rdo/validacao';
 import { IndicadorSync } from '@/features/sync/IndicadorSync';
@@ -196,6 +197,14 @@ export default function AssistenteRdo() {
               </Texto>
             </View>
           </View>
+        ) : null}
+
+        {etapa === 0 || etapa === 7 ? (
+          <ObraParada
+            {...props}
+            mostrarBotao={etapa === 0}
+            irParaRevisao={() => irPara(ETAPAS.length - 1)}
+          />
         ) : null}
 
         <Texto variante="titulo" style={styles.tituloEtapa}>

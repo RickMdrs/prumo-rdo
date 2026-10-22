@@ -212,7 +212,7 @@ ${tabela(
 <h2>Atividades</h2>
 ${
   rdo.sem_producao_justificativa
-    ? `<p><b>Dia sem produção.</b> ${esc(rdo.sem_producao_justificativa)}</p>`
+    ? `<p><b>Obra parada no dia.</b> ${esc(rdo.sem_producao_justificativa)}</p>`
     : tabela(
         ['Serviço', 'Local', 'Qtd. do dia', '% acum.', 'Situação'],
         d.atividades.map((a) => [
