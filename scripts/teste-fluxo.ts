@@ -13,6 +13,8 @@ dotenv.config({ path: '.env.local' });
 
 const URL = process.env.EXPO_PUBLIC_SUPABASE_URL!;
 const ANON = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
+const SENHA_DEMO = process.env.SENHA_DEMO;
+if (!SENHA_DEMO) throw new Error('Defina SENHA_DEMO no .env.local (senha das contas de demonstração).');
 const OBRA = '__teste_fluxo__';
 
 let falhas = 0;
@@ -25,7 +27,7 @@ async function logar(email: string): Promise<SupabaseClient<Database>> {
   const sb = createClient<Database>(URL, ANON, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
-  const { error } = await sb.auth.signInWithPassword({ email, password: 'prumo2026' });
+  const { error } = await sb.auth.signInWithPassword({ email, password: SENHA_DEMO });
   if (error) throw error;
   return sb;
 }

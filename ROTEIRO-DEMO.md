@@ -1,6 +1,6 @@
 # Prumo RDO — Roteiro da banca
 
-Três celulares com Expo Go, um por perfil. Senha dos três: `prumo2026`.
+Três celulares com Expo Go, um por perfil. Senha dos três: a definida em `SENHA_DEMO` no `.env.local`.
 
 | Celular | Login | O que mostra |
 |---|---|---|

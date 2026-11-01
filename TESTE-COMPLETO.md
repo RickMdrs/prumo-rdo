@@ -11,7 +11,7 @@ Roteiro para pôr o app inteiro à prova antes da banca. Cada item tem um **cód
 | **B** | `operacional@prumo.dev` | Equipe de campo |
 | **C** | `cliente@prumo.dev` | Contratante |
 
-Senha dos três: `prumo2026`.
+Senha dos três: a definida em `SENHA_DEMO` no `.env.local`.
 
 **Legenda:** ☐ = ainda não testado · marcar **OK** ou **FALHOU** na tabela do fim.
 

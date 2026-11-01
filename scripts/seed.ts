@@ -23,7 +23,8 @@ dotenv.config({ path: '.env' });
 const URL = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const DB_URL = process.env.SUPABASE_DB_URL;
-const SENHA = process.env.SENHA_DEMO ?? 'prumo2026';
+const SENHA = process.env.SENHA_DEMO;
+if (!SENHA) throw new Error('Defina SENHA_DEMO no .env.local (senha das contas de demonstração).');
 
 const USUARIOS = [
   { email: 'master@prumo.dev', nome: 'Eng. Henrique Medeiros', papel: 'master' },
